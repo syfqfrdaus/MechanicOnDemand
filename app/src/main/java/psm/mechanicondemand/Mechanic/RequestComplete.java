@@ -127,7 +127,7 @@ public class RequestComplete extends DrawerMechanic {
                         Toast.makeText(RequestComplete.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
+                //Not tested yet
                 Intent intent2 = new Intent(getApplicationContext(), MechanicRequest.class);
                 startActivity(intent2);
                 finish();
