@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "723818111117",
+    "project_id": "mechanicondemand-e48c6",
+    "storage_bucket": "mechanicondemand-e48c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723818111117:android:eb02fefeac442d2a2c02c4",
+        "android_client_info": {
+          "package_name": "psm.mechanicondemand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723818111117-09ad40uii4ml5usu6va1u12d5h2peo4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-520iNWwHhlfGWT8zSSXLm4XEwRD1_s8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723818111117-09ad40uii4ml5usu6va1u12d5h2peo4v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

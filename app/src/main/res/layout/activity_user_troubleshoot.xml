@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".User.UserTroubleshoot">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="BASIC MAINTENANCE"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/basicmaintenance"
+            android:layout_width="match_parent"
+            android:layout_height="250sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="CHANGING FLAT TIRE"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/tirechange"
+            android:layout_width="match_parent"
+            android:layout_height="250sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="CAR OVERHEATING"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/caroverheat"
+            android:layout_width="match_parent"
+            android:layout_height="250sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="CAR WON'T START"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/carwontstart"
+            android:layout_width="match_parent"
+            android:layout_height="250sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="SOUND FROM TIRE AREA"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <WebView
+            android:id="@+id/soundfromtire"
+            android:layout_width="match_parent"
+            android:layout_height="250sp" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_mechanicRequest"
+            android:title="View Request"
+            android:icon="@drawable/icon_car_repair"
+            />
+
+        <item
+            android:id="@+id/nav_mechanicProfile"
+            android:title="Profile"
+            android:icon="@drawable/icon_profile"
+            />
+
+        <item
+            android:id="@+id/nav_mechanicHistory"
+            android:title="History"
+            android:icon="@drawable/icon_history"
+            />
+
+        <item
+            android:id="@+id/nav_mechanicSetting"
+            android:title="Setting"
+            android:icon="@drawable/icon_setting"
+            />
+
+        <item
+            android:id="@+id/nav_mechanicLogout"
+            android:title="Log Out"
+            android:icon="@drawable/icon_logout"
+            />
+
+    </group>
+</menu>

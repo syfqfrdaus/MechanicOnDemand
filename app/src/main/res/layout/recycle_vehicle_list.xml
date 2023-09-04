@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:id="@+id/recycleLayout">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Type : " />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView14"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="80dp"
+            android:text="Vehi type"/>
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView14"
+            android:layout_marginTop="10dp"
+            android:text="Brand" />
+
+        <TextView
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView15"
+            android:layout_below="@id/type"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="85dp"
+            android:text="Vehi Brand"
+            />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView15"
+            android:layout_marginTop="10dp"
+            android:text="Model :"/>
+
+        <TextView
+            android:id="@+id/model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView16"
+            android:layout_below="@id/brand"
+            android:text="Vehi Model"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="75dp"/>
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView16"
+            android:layout_marginTop="10dp"
+            android:text="Vehicle Plate :"
+            />
+
+        <TextView
+            android:id="@+id/plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/model"
+            android:layout_toRightOf="@id/textView17"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:text="Vehi Plate"/>
+
+
+        <Button
+            android:id="@+id/btnUpdateVehi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView17"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="85dp"
+            android:text="Update" />
+
+        <Button
+            android:id="@+id/btnDeleteVehi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/btnUpdateVehi"
+            android:layout_below="@id/textView17"
+            android:layout_marginTop="15dp"
+            android:text="Delete" />
+
+
+
+    </RelativeLayout>
+</LinearLayout>

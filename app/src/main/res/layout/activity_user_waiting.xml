@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".User.UserWaiting">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="Request Accepted"
+            />
+
+        <FrameLayout
+            android:id="@+id/frame_map4"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp">
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:text="Mechanic Is Coming To You"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/MechanicDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mechanic Details :"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/MechName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/MechanicDetail"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="Name"
+                />
+
+            <TextView
+                android:id="@+id/MechPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/MechName"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="PhoneNo"
+                />
+
+            <TextView
+                android:id="@+id/MechExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/MechPhone"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Years Of Experience :"
+                />
+
+            <TextView
+                android:id="@+id/UserID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/MechExp"
+                android:textSize="15sp"
+                android:text="UserID"/>
+
+            <TextView
+                android:id="@+id/MechID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/UserID"
+                android:textSize="15sp"
+                android:text="MechID"/>
+
+            <TextView
+                android:id="@+id/lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_below="@+id/MechID"
+                android:textSize="15sp"
+                android:text="Lat"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnCallMech"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_call"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="Call"/>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

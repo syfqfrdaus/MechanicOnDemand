@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mechanic.RequestProcess">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="Customer Location"
+        />
+
+    <FrameLayout
+        android:id="@+id/frame_map3"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp">
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/custAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/icon_pinlocation"
+            />
+        <TextView
+            android:id="@+id/CustName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/custAddress"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Name : "/>
+
+        <TextView
+            android:id="@+id/CustVehicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CustName"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Vehicle : "/>
+
+        <TextView
+            android:id="@+id/CustPlate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CustVehicle"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Plate : "/>
+
+        <TextView
+            android:id="@+id/CustPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/CustPlate"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="PhoneNo : "
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_call"
+            android:text="Call"
+            />
+
+        <Button
+            android:id="@+id/btnNavigate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:drawableLeft="@drawable/icon_navigate"
+            android:text="Navigate"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnArrived"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/icon_check"
+        android:text="Arrived"/>
+
+    </LinearLayout>
+
+</ScrollView>

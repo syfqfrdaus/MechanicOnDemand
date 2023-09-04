@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login.UserRegister1">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="USER REGISTER"
+        android:textAlignment="center"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-black"
+        android:text="User Details :"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/RegUserName"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Fullname"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/RegUserPhoneNo"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Phone No"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/RegUserEmail"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/RegUserPassword"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btnRegUser"
+        android:layout_marginTop="50dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Resigter" />
+</LinearLayout>

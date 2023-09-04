@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mechanic.RequestDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Request Details"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@color/light_blue"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ReqDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Distance"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/addressDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/icon_pinlocation"
+                android:drawablePadding="5dp"
+                android:text="Kawasan"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addressDetails"
+                android:layout_marginTop="20dp"
+                android:text="Vehicle : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/DetailsVehicleName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView24"
+                android:layout_alignTop="@id/textView24"
+                android:textSize="20sp"
+                android:text="VehicleName"
+                />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView24"
+                android:layout_marginTop="20dp"
+                android:text="Service : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/DetailsServiceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView25"
+                android:layout_alignBottom="@id/textView25"
+                android:textSize="20sp"
+                android:text="ServiceType"
+                />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView25"
+                android:layout_marginTop="20dp"
+                android:text="Remarks : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/DetailsRemarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView26"
+                android:layout_alignBottom="@id/textView26"
+                android:textSize="20sp"
+                android:text="DisplayRemarks"
+                />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView26"
+                android:layout_marginTop="20dp"
+                android:text="Name : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/RequesterName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView27"
+                android:layout_alignBottom="@id/textView27"
+                android:textSize="20sp"
+                android:text="RequesterName"/>
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView27"
+                android:layout_marginTop="20dp"
+                android:text="Phone No : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/RequesterPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView28"
+                android:layout_alignBottom="@id/textView28"
+                android:textSize="20sp"
+                android:text="RequesterPhone"/>
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView28"
+                android:layout_marginTop="20dp"
+                android:text="Plate : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/RequesterVPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView29"
+                android:layout_alignBottom="@id/textView29"
+                android:textSize="20sp"
+                android:text="VehiclePlate"/>
+
+            <!--<TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView29"
+                android:layout_marginTop="20dp"
+                android:text="Offered Price : "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/OfferedPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textView30"
+                android:layout_alignBottom="@id/textView30"
+                android:textSize="20sp"
+                android:text="Price"/>-->
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnNegotiate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Negotiate Fee" />
+
+        <Button
+            android:id="@+id/btnAcceptRequest"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Accept Request" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

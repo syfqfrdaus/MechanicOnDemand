@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login.UserRegister2">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="VEHICLE REGISTER"
+        android:textAlignment="center"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Vehicle Details :"
+        android:textSize="20sp" />
+
+
+
+    <EditText
+        android:id="@+id/VehicleName"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Vehicle Type"
+        android:inputType="textPersonName" />
+
+
+    <EditText
+        android:id="@+id/VehicleBrand"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Vehicle Brand"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/VehicleModel"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Vehicle Model"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/VehiclePlate"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Vehicle Plate"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnAddVehicle"
+        android:layout_marginTop="50dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Add" />
+
+</LinearLayout>

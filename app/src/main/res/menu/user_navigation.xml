@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_userRequest"
+            android:title="Request Mechanic"
+            android:icon="@drawable/icon_car_repair"
+            />
+
+        <item
+            android:id="@+id/nav_userProfile"
+            android:title="Profile"
+            android:icon="@drawable/icon_profile"
+            />
+
+        <item
+            android:id="@+id/nav_userVehicle"
+            android:title="Vehicle"
+            android:icon="@drawable/icon_car"
+            />
+
+        <item
+            android:id="@+id/nav_userTroubleshoot"
+            android:title="Basic Troubleshoot"
+            android:icon="@drawable/icon_troubleshoot"
+            />
+
+        <item
+            android:id="@+id/nav_userHistory"
+            android:title="History"
+            android:icon="@drawable/icon_history"
+            />
+
+        <item
+            android:id="@+id/nav_userSetting"
+            android:title="Setting"
+            android:icon="@drawable/icon_setting"
+            />
+
+        <item
+            android:id="@+id/nav_userLogout"
+            android:title="Log Out"
+            android:icon="@drawable/icon_logout"
+            />
+
+
+    </group>
+
+</menu>

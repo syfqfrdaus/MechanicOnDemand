@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login.MechanicRegister">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text="MECHANIC REGISTER"
+        android:textAlignment="center"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Mechanic Details :"
+        android:textSize="20sp" />
+
+
+    <EditText
+        android:id="@+id/RegMechName"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Fullname"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/RegMechPhoneNo"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Phone No"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/RegMechEmail"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/RegMechPassword"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Enter Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/MechYrsExp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="Years of Experience"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnRegMechanic"
+        android:layout_marginTop="30dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Register" />
+
+
+</LinearLayout>

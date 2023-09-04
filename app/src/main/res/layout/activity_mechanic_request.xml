@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Mechanic.MechanicRequest">
+
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="Request Board" />
+
+    <EditText
+        android:id="@+id/mechanicAddress"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Current Address"
+        android:textAlignment="center"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        />
+
+    <FrameLayout
+        android:id="@+id/frame_map2"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"/>
+</LinearLayout>
