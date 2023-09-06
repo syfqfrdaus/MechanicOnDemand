@@ -53,7 +53,6 @@
                     android:id="@+id/textView20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:text="Vehicle : " />
 
                 <TextView
@@ -70,7 +69,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textView20"
                     android:layout_marginTop="10dp"
-
                     android:text="Service : " />
 
                 <TextView

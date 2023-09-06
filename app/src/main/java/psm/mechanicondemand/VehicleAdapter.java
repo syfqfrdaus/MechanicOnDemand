@@ -44,7 +44,9 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
+
         return vehicleArrayList.size();
+
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

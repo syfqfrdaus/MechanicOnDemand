@@ -71,7 +71,7 @@ public class RequestComplete extends DrawerMechanic {
                 Map<String, Object> historyData = new HashMap<>();
                 historyData.put("MechanicID", mechanicID);
                 historyData.put("UserID", userID);
-                historyData.put("userName", userName);
+                historyData.put("UserName", userName);
                 historyData.put("VehicleName", VehicleName);
                 historyData.put("Address", Address);
                 historyData.put("Service", Service);
@@ -127,7 +127,7 @@ public class RequestComplete extends DrawerMechanic {
                         Toast.makeText(RequestComplete.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-                //Not tested yet
+                //Goes Back to request board
                 Intent intent2 = new Intent(getApplicationContext(), MechanicRequest.class);
                 startActivity(intent2);
                 finish();
