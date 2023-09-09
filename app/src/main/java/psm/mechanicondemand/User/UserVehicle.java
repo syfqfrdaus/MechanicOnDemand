@@ -12,18 +12,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import psm.mechanicondemand.DrawerUser;
 import psm.mechanicondemand.Login.UserLogin;
@@ -57,7 +62,7 @@ public class UserVehicle extends DrawerUser {
 
         add = findViewById(R.id.addVehicle);
 
-        recyclerView = findViewById(R.id.recycleView);
+        recyclerView = findViewById(R.id.recycleVehicle);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -67,9 +72,6 @@ public class UserVehicle extends DrawerUser {
 
         recyclerView.setAdapter(vehicleAdapter);
 
-
-        FillRecyclerView();
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,52 +79,34 @@ public class UserVehicle extends DrawerUser {
                 startActivity(intent);
             }
         });
-    }
-
-    private void FillRecyclerView() {
 
         String userId = mAuth.getCurrentUser().getUid();
 
-        /**db.collection("vehicles")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null){
-                            Log.e("Firestore Error", error.getMessage());
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges()){
-                            if (dc.getType() == DocumentChange.Type.ADDED){
-                                vehicleArrayList.add(dc.getDocument().toObject(Vehicle.class));
-                            }
-                            vehicleAdapter.notifyDataSetChanged();
-                        }
+        // Create a reference to the "vehicles" collection
+        CollectionReference vehiclesCollection = db.collection("vehicles");
 
+        // Create a reference to the specific user's document
+        DocumentReference userRef = vehiclesCollection.document(userId);
+
+        // Create a reference to the "VehiCount" subcollection under the user's document
+        CollectionReference veCountCollection = userRef.collection("VehiCount");
+
+        // Query all documents in the "VehiCount" subcollection
+        veCountCollection.get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+
+                    // Loop through the documents in the "VehiCount" subcollection
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        // Convert the document data to a Vehicle object
+                        Vehicle vehicle = document.toObject(Vehicle.class);
+                        vehicleArrayList.add(vehicle);
                     }
-                });**/
-
-        db.collection("vehicles")
-                .document(userId)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Vehicle vehicle = document.toObject(Vehicle.class);
-                                // Use the vehicle object as needed
-
-                                // Add the vehicle to your vehicleArrayList
-                                vehicleArrayList.add(vehicle);
-                                vehicleAdapter.notifyDataSetChanged();
-                            } else {
-                                Log.d("Firestore", "No such document");
-                            }
-                        } else {
-                            Log.e("Firestore Error", task.getException().getMessage());
-                        }
-                    }
+                    // Notify the adapter that data has changed
+                    vehicleAdapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> {
+                    // Handle any errors here
+                    Toast.makeText(this, "Failed to fetch vehicle data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
 
     }
