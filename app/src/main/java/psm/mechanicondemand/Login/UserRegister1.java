@@ -59,61 +59,57 @@ public class UserRegister1 extends AppCompatActivity {
                 Useremail = uEmail.getText().toString();
                 uPass = uPassword.getText().toString();
 
-                if (TextUtils.isEmpty(Useremail)){
-                    Toast.makeText(UserRegister1.this, "Enter Email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(uPass)){
-                    Toast.makeText(UserRegister1.this, "Enter Password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                if (uName.isEmpty() || uPhone.isEmpty() || Useremail.isEmpty() || uPass.isEmpty()) {
+                    Toast.makeText(UserRegister1.this, "Please fill all fields", Toast.LENGTH_LONG).show();
+                } else {
 
-                mAuth.createUserWithEmailAndPassword(Useremail, uPass)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(UserRegister1.this, "Account Created", Toast.LENGTH_SHORT).show();
+                    mAuth.createUserWithEmailAndPassword(Useremail, uPass)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(UserRegister1.this, "Account Created", Toast.LENGTH_SHORT).show();
 
-                                    // Get the user ID of the newly created user
-                                    String userId = mAuth.getCurrentUser().getUid();
+                                        // Get the user ID of the newly created user
+                                        String userId = mAuth.getCurrentUser().getUid();
 
-                                    // Create a new document reference with the user ID
-                                    DocumentReference userRef = db.collection("users").document(userId);
+                                        // Create a new document reference with the user ID
+                                        DocumentReference userRef = db.collection("users").document(userId);
 
-                                    // Create a user object with the desired details
-                                    Map<String, Object> user = new HashMap<>();
-                                    user.put("Name", uName);
-                                    user.put("PhoneNo", uPhone);
-                                    user.put("Email", Useremail);
+                                        // Create a user object with the desired details
+                                        Map<String, Object> user = new HashMap<>();
+                                        user.put("Name", uName);
+                                        user.put("PhoneNo", uPhone);
+                                        user.put("Email", Useremail);
 
-                                    // Set the user object in the Firestore document
-                                    userRef.set(user)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(UserRegister1.this, "User details added to Firestore", Toast.LENGTH_SHORT).show();
-                                                    // You can perform additional actions here if needed
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(UserRegister1.this, "Failed to add user details to Firestore", Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
+                                        // Set the user object in the Firestore document
+                                        userRef.set(user)
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Toast.makeText(UserRegister1.this, "User details added to Firestore", Toast.LENGTH_SHORT).show();
+                                                        // You can perform additional actions here if needed
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(UserRegister1.this, "Failed to add user details to Firestore", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
 
-                                    Intent intent = new Intent(getApplicationContext(), UserRegister2.class);
-                                    startActivity(intent);
-                                    finish();
+                                        Intent intent = new Intent(getApplicationContext(), UserRegister2.class);
+                                        startActivity(intent);
+                                        finish();
 
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(UserRegister1.this, "Registration failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(UserRegister1.this, "Registration failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
 
             }
         });

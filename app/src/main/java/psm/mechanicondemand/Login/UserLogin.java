@@ -29,6 +29,8 @@ public class UserLogin extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
+    int loginAttempts = 0; // Initialize the login attempts counter
+
     @Override
     public void onStart() {
         super.onStart();
@@ -63,15 +65,16 @@ public class UserLogin extends AppCompatActivity {
         btnuLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email,password;
+                String email, password;
+
                 email = userID.getText().toString();
                 password = userPass.getText().toString();
 
-                if (TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     Toast.makeText(UserLogin.this, "Enter Email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     Toast.makeText(UserLogin.this, "Enter Password", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -81,13 +84,24 @@ public class UserLogin extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    // Reset the login attempts counter on successful login
+                                    loginAttempts = 0;
+
                                     Toast.makeText(UserLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), UserRequest.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(UserLogin.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(UserLogin.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+
+                                    // Increment the login attempts counter
+                                    loginAttempts++;
+
+                                    // Check if login attempts exceed the limit (e.g., 3)
+                                    if (loginAttempts >= 4) {
+                                        Toast.makeText(UserLogin.this, "Login attempts exceeded. Closing app.", Toast.LENGTH_SHORT).show();
+                                        finishAffinity(); // Close the app
+                                    }
                                 }
                             }
                         });

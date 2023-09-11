@@ -6,9 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -16,6 +24,9 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
 
     Context context;
     ArrayList<Vehicle> vehicleArrayList;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     public VehicleAdapter(Context context, ArrayList<Vehicle> vehicleArrayList) {
         this.context = context;
@@ -40,6 +51,18 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
         holder.Brand.setText(vehicle.VehicleBrand);
         holder.Model.setText(vehicle.VehicleModel);
         holder.Plate.setText(vehicle.VehiclePlate);
+
+        // Set an OnClickListener for the "Delete" button
+        final int deletePosition = position; // Store the position as a final variable
+
+        // Set an OnClickListener for the "Delete" button
+        holder.Delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Call a method to delete the vehicle based on position
+                deleteVehicle(deletePosition);
+            }
+        });
 
     }
 
@@ -67,4 +90,38 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
 
         }
     }
+
+    private void deleteVehicle(int position) {
+        String userId = mAuth.getCurrentUser().getUid();
+
+        // Reference to the "vehicles" collection
+        CollectionReference vehiclesCollection = db.collection("vehicles");
+
+        // Reference to the specific document (based on numerical index) within the "VehiCount" subcollection
+        DocumentReference documentReference = vehiclesCollection
+                .document(userId) // Assuming userId is the current user's ID
+                .collection("VehiCount")
+                .document(String.valueOf(position + 1)); // Convert position to the corresponding index
+
+        documentReference.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Document successfully deleted
+                        Toast.makeText(context, "Vehicle deleted", Toast.LENGTH_SHORT).show();
+
+                        // Remove the item from the ArrayList
+                        vehicleArrayList.remove(position);
+                        notifyItemRemoved(position);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle errors here
+                        Toast.makeText(context, "Error deleting vehicle: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 }

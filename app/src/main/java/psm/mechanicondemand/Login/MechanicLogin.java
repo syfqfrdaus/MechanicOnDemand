@@ -29,6 +29,8 @@ public class MechanicLogin extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
+    int loginAttempts = 0; // Initialize the login attempts counter
+
     @Override
     public void onStart() {
         super.onStart();
@@ -64,6 +66,7 @@ public class MechanicLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email, password;
+
                 email = mechanicEmail.getText().toString();
                 password = mechanicPassword.getText().toString();
 
@@ -81,13 +84,25 @@ public class MechanicLogin extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    // Reset the login attempts counter on successful login
+                                    loginAttempts = 0;
+
                                     Toast.makeText(MechanicLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MechanicRequest.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(MechanicLogin.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MechanicLogin.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+
+                                    // Increment the login attempts counter
+                                    loginAttempts++;
+
+                                    // Check if login attempts exceed the limit (e.g., 3)
+                                    if (loginAttempts >= 4) {
+                                        Toast.makeText(MechanicLogin.this, "Login attempts exceeded. Closing app.", Toast.LENGTH_SHORT).show();
+                                        finishAffinity(); // Close the app
+                                    }
+
                                 }
                             }
                         });
