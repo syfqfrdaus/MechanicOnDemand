@@ -129,7 +129,7 @@ public class MechanicRepairing extends DrawerMechanic {
                 intent3.putExtra("userName",userName);
                 intent3.putExtra("VehicleName",VehicleName);
                 intent3.putExtra("Address",Address);
-                intent3.putExtra(" Service",Service);
+                intent3.putExtra("Service",Service);
                 intent3.putExtra("Price",Price);
                 startActivity(intent3);
                 finish();

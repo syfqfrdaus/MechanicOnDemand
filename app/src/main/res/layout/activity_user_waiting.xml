@@ -120,9 +120,18 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/icon_call"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:text="Call"/>
+
+        <Button
+            android:id="@+id/btnMechArrived"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Mechanic Arrived"
+            />
 
 
 

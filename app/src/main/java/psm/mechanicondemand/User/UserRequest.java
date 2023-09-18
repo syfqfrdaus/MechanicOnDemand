@@ -59,6 +59,7 @@ public class UserRequest extends DrawerUser {
     SupportMapFragment supportMapFragment;
     FusedLocationProviderClient fusedLocationProviderClient;
 
+    int fee = 0;
 
 
     @Override
@@ -68,6 +69,8 @@ public class UserRequest extends DrawerUser {
         setContentView(activityUserRequestBinding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
+
+        String userId = mAuth.getCurrentUser().getUid();
 
         btnRequest = findViewById(R.id.btnGetRequest);
         formAddress = findViewById(R.id.formAddress);
@@ -97,7 +100,11 @@ public class UserRequest extends DrawerUser {
 
         // Retrieve the vehicle models from Firestore and populate the Spinner
         firestore = FirebaseFirestore.getInstance();
-        firestore.collection("vehicles").get()
+
+        firestore.collection("vehicles")
+                .document(userId) // Reference the user's document
+                .collection("VehiCount") // Reference the "VehiCount" subcollection
+                .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot querySnapshot) {
@@ -120,6 +127,10 @@ public class UserRequest extends DrawerUser {
                     @Override
                     public void onFailure(Exception e) {
                         // Handle any errors that occurred while retrieving the vehicle models
+                        String errorMessage = e.getMessage(); // Get the error message
+                        // Create and show a Toast message with the error message
+                        Toast.makeText(UserRequest.this, "Error fetching data: " + errorMessage, Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -127,7 +138,7 @@ public class UserRequest extends DrawerUser {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedVehicleModel = parent.getItemAtPosition(position).toString();
-                Toast.makeText(UserRequest.this, "Value selected are " +selectedVehicleModel, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRequest.this, "Value selected are " + selectedVehicleModel, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -136,11 +147,70 @@ public class UserRequest extends DrawerUser {
             }
         });
 
+        // Create an ArrayList to store the service names (e.g., "Puncture", "Battery (Car)", etc.)
+        List<String> serviceNames = new ArrayList<>();
+
+        // Populate the Spinner with service names from Firestore
+        db.collection("service")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot querySnapshot) {
+                        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                            // Get the service name (e.g., "Puncture")
+                            String serviceName = document.getId();
+                            serviceNames.add(serviceName);
+                        }
+
+                        // Create an ArrayAdapter to populate the Spinner
+                        ArrayAdapter<String> adapter = new ArrayAdapter<>(UserRequest.this,
+                                android.R.layout.simple_spinner_item, serviceNames);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                        // Set the adapter to the Spinner
+                        spinService.setAdapter(adapter);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle any errors that occurred while retrieving the service names
+                        Toast.makeText(UserRequest.this, "Error fetching service names: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        // Set an OnItemSelectedListener for the Spinner
         spinService.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected service name
                 selectedService = parent.getItemAtPosition(position).toString();
-                Toast.makeText(UserRequest.this, "Service Selected Are" +selectedService, Toast.LENGTH_SHORT).show();
+
+                // Use the selected service name to fetch the corresponding price from Firestore
+                db.collection("service")
+                        .document(selectedService)
+                        .get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                // Get the "Price" field from the selected service document
+                                Double price = documentSnapshot.getDouble("Price");
+                                if (price != null) {
+                                    fee = price.intValue(); // Set the fee variable to the fetched price
+                                    Toast.makeText(UserRequest.this, "Service Selected: " + selectedService + "\nPrice: " + fee, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // Handle the case where the price is not available
+                                    Toast.makeText(UserRequest.this, "Price not available for " + selectedService, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Handle any errors that occurred while fetching the price
+                                Toast.makeText(UserRequest.this, "Error fetching price: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
 
             @Override
@@ -162,18 +232,11 @@ public class UserRequest extends DrawerUser {
                 Lati = latitude;
                 Longi = longitude;
 
-                if(RDetails.isEmpty())
-                {
-                    Toast.makeText(UserRequest.this,"Please fill details",Toast.LENGTH_LONG).show();
-                }
-                else{
-                    // Get the user ID of the newly created user
-                    String userId = mAuth.getCurrentUser().getUid();
-
+                if (RDetails.isEmpty()) {
+                    Toast.makeText(UserRequest.this, "Please fill details", Toast.LENGTH_LONG).show();
+                } else {
                     // Create a new document reference with the user ID
                     DocumentReference userRef = db.collection("request").document(userId);
-
-                    int fee = 100;
 
                     // Create a user object with the desired details
                     Map<String, Object> user = new HashMap<>();
@@ -183,9 +246,9 @@ public class UserRequest extends DrawerUser {
                     user.put("RequestDetails", RDetails);
                     user.put("Latitude", Lati);
                     user.put("Longitude", Longi);
-                    user.put("Status","Active");
-                    user.put("Fee",fee);
-                    user.put("NewFee",fee);
+                    user.put("Status", "Active");
+                    user.put("Fee", fee);
+                    user.put("NewFee", fee);
                     user.put("NegoStatus", "Idle");
 
                     // Set the user object in the Firestore document

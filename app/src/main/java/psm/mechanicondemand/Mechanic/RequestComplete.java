@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,7 +20,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Transaction;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import psm.mechanicondemand.DrawerMechanic;
@@ -67,6 +70,16 @@ public class RequestComplete extends DrawerMechanic {
             @Override
             public void onClick(View v) {
 
+                Timestamp currentTimeStamp = Timestamp.now();
+
+                // Format the date component as "dd/MM/yyyy"
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String formattedDate = dateFormat.format(currentTimeStamp.toDate());
+
+                // Format the time component as "HH:mm"
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+                String formattedTime = timeFormat.format(currentTimeStamp.toDate());
+
                 // Create a Map to hold the data
                 Map<String, Object> historyData = new HashMap<>();
                 historyData.put("MechanicID", mechanicID);
@@ -76,6 +89,8 @@ public class RequestComplete extends DrawerMechanic {
                 historyData.put("Address", Address);
                 historyData.put("Service", Service);
                 historyData.put("Price", Price);
+                historyData.put("Date", formattedDate);
+                historyData.put("Time", formattedTime);
 
                 // Reference to the "historyCounter" document
                 DocumentReference counterRef = db.collection("counters").document("historyCounter");
