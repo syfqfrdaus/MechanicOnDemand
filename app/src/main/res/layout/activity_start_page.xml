@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/mechbackground"
     tools:context=".Login.StartPage">
 
     <ImageView
@@ -14,7 +15,8 @@
         android:layout_marginTop="100dp"
         android:layout_height="40dp"
         android:layout_weight="1"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:background="@color/white"/>
 
     <TextView
         android:id="@+id/textView3"
@@ -25,7 +27,8 @@
         android:layout_weight="1"
         android:text="Welcome"
         android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -36,7 +39,8 @@
         android:layout_weight="1"
         android:text="Select Type Of User :"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/btnstartUser"

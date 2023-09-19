@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -67,24 +69,24 @@ public class RequestProcess extends DrawerMechanic {
         btnNavigate = findViewById(R.id.btnNavigate);
         btnArrived = findViewById(R.id.btnArrived);
 
+        TextView DP = findViewById(R.id.HMMM);
+
         db = FirebaseFirestore.getInstance();
 
         Intent intent = getIntent();
         String userID = intent.getStringExtra("UserID");
         String userName = intent.getStringExtra("UserName");
         String userPhone = intent.getStringExtra("UserPhone");
-        String vehiclePlate = intent.getStringExtra("VehiclePlate");
         String vehicleModel = intent.getStringExtra("VehicleModel");
 
         UID = userID;
         Name = userName;
         PhoneNo = userPhone;
-        Plate = vehiclePlate;
 
-        CName.setText("Name : "+userName);
-        CVehicle.setText("Vehicle : "+vehicleModel);
-        CPlate.setText("Vehicle Plate : "+vehiclePlate);
-        CPhone.setText("Phone No : "+userPhone);
+        CName.setText("Name : "+ userName);
+        CVehicle.setText("Vehicle : "+ vehicleModel);
+        CPhone.setText("Phone No : "+ userPhone);
+        DP.setText(userID);
 
 
 
@@ -125,6 +127,45 @@ public class RequestProcess extends DrawerMechanic {
                         Log.e("RequestProcess", "Error retrieving document: " + e.getMessage());
                     }
                 });
+
+
+        CollectionReference vehiclesCollection = db.collection("vehicles");
+
+        vehiclesCollection
+                .document(userID) // Replace with the actual userID
+                .collection("VehiCount")
+                .whereEqualTo("VehicleModel", vehicleModel) // Query to find the document with the matching VehicleModel
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            // Get the first document that matches the query (there should be only one)
+                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+
+                            String vehiclePlate = documentSnapshot.getString("VehiclePlate");
+                            if (vehiclePlate != null) {
+                                Plate = vehiclePlate; // Assign the VehiclePlate to Plate variable
+                                CPlate.setText("Plate : " + Plate); // Set the Plate in the TextView
+                            } else {
+                                // Handle the case where VehiclePlate is null
+                                Toast.makeText(RequestProcess.this, "VehiclePlate is null", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            // Handle the case where no matching document was found
+                            Toast.makeText(RequestProcess.this, "No matching document found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle any errors that occurred while fetching the documents
+                        Log.e("Firestore Error", e.getMessage());
+                        Toast.makeText(RequestProcess.this, "Error fetching documents", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
 
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -24,6 +24,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.auth.User;
 
+import org.w3c.dom.Text;
+
+import java.util.Map;
+
 import psm.mechanicondemand.DrawerMechanic;
 import psm.mechanicondemand.R;
 import psm.mechanicondemand.Request;
@@ -46,6 +50,7 @@ public class RequestDetails extends DrawerMechanic {
     String userName;
     String userPhone = "";
     String vehiclePlate;
+    String VModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +71,7 @@ public class RequestDetails extends DrawerMechanic {
         TextView RDistance = findViewById(R.id.ReqDistance);
         TextView requesterName = findViewById(R.id.RequesterName);
         TextView requesterPhone = findViewById(R.id.RequesterPhone);
-        TextView requesterVPlate = findViewById(R.id.RequesterVPlate);
+        TextView offeredPrice = findViewById(R.id.OfferedPrice);
 
         // Retrieve the selected request from the intent
         Intent intent = getIntent();
@@ -86,6 +91,9 @@ public class RequestDetails extends DrawerMechanic {
             serviceType.setText(selectedRequest.getServiceType());
             DetailsVehicle.setText(selectedRequest.getVehicleModel());
             Details.setText(selectedRequest.getRequestDetails());
+
+            int fee = selectedRequest.getFee();
+            offeredPrice.setText(String.valueOf(fee));
 
             //Fetch the document ID which is the same as user ID.
             UserID = selectedRequest.getDocumentId();
@@ -118,31 +126,16 @@ public class RequestDetails extends DrawerMechanic {
                         }
                     });
 
-            db.collection("vehicles")
-                    .document(UserID)
-                    .get()
-                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()) {
-                                vehiclePlate = documentSnapshot.getString("VehiclePlate");
+            VModel = selectedRequest.getVehicleModel();
 
-                                requesterVPlate.setText(vehiclePlate);
+            // Reference to the "vehicles" collection for the specific user
+            DocumentReference userVehiclesRef = db.collection("vehicles").document(UserID);
 
-                            } else {
-                                // User document does not exist
-                                requesterName.setText("N/A");
-                                requesterPhone.setText("N/A");
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Error fetching user details
-                            Log.e("Firestore Error", e.getMessage());
-                        }
-                    });
+
+            //Find ways to get vehicle plate no
+
+
+
         }
 
         btnNego.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +195,6 @@ public class RequestDetails extends DrawerMechanic {
                                             intent2.putExtra("UserID", UserID);
                                             intent2.putExtra("UserName", userName);
                                             intent2.putExtra("UserPhone", userPhone);
-                                            intent2.putExtra("VehiclePlate", vehiclePlate);
                                             intent2.putExtra("VehicleModel", selectedRequest.getVehicleModel());
                                             startActivity(intent2);
                                         }

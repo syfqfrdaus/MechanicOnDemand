@@ -18,11 +18,12 @@ import psm.mechanicondemand.History;
 import psm.mechanicondemand.HistoryAdapter;
 import psm.mechanicondemand.Mechanic.MechanicHistory;
 import psm.mechanicondemand.R;
+import psm.mechanicondemand.databinding.ActivityUserHistoryBinding;
 import psm.mechanicondemand.databinding.ActivityUserRequestBinding;
 
 public class UserHistory extends DrawerUser {
 
-    ActivityUserRequestBinding activityUserRequestBinding;
+    ActivityUserHistoryBinding activityUserHistoryBinding;
 
     RecyclerView recyclerView;
     ArrayList<History> historyArrayList;
@@ -31,11 +32,12 @@ public class UserHistory extends DrawerUser {
     FirebaseFirestore db;
     FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityUserRequestBinding = activityUserRequestBinding.inflate(getLayoutInflater());
-        setContentView(activityUserRequestBinding.getRoot());
+        activityUserHistoryBinding = activityUserHistoryBinding.inflate(getLayoutInflater());
+        setContentView(activityUserHistoryBinding.getRoot());
 
         recyclerView = findViewById(R.id.recycleUHistory);
         recyclerView.setHasFixedSize(true);

@@ -43,10 +43,10 @@ public class UserComplete extends DrawerUser {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        Intent intent = getIntent();
-        String mechID = intent.getStringExtra("MechID");
-        String mechName = intent.getStringExtra("MechName");
-        String mechPhone = intent.getStringExtra("MechPhone");
+        Intent intent2 = getIntent();
+        String mechID = intent2.getStringExtra("MechID");
+        String mechName = intent2.getStringExtra("MechName");
+        String mechPhone = intent2.getStringExtra("MechPhone");
 
         activityUserCompleteBinding.UMechName.setText("Mechanic Name : " + mechName);
         activityUserCompleteBinding.UMechPhone.setText("Mechanic Phone : " + mechPhone);
@@ -136,8 +136,8 @@ public class UserComplete extends DrawerUser {
                 Toast.makeText(UserComplete.this, "Request Completed", Toast.LENGTH_SHORT).show();
                 dialog.dismiss(); // Dismiss the dialog
 
-                Intent intent2 = new Intent(getApplicationContext(), UserRequest.class);
-                startActivity(intent2);
+                Intent intent3 = new Intent(getApplicationContext(), UserRequest.class);
+                startActivity(intent3);
                 finish();
             }
         });

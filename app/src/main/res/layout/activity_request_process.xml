@@ -32,7 +32,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/custAddress"
@@ -83,6 +84,13 @@
             android:textSize="20sp"
             android:text="PhoneNo : "
             />
+
+        <TextView
+            android:id="@+id/HMMM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/CustPhone"
+            android:textSize="20sp"/>
     </RelativeLayout>
 
     <LinearLayout

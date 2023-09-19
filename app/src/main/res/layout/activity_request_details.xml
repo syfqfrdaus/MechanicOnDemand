@@ -45,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/addressDetails"
@@ -152,28 +153,10 @@
                 android:text="RequesterPhone"/>
 
             <TextView
-                android:id="@+id/textView29"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView28"
-                android:layout_marginTop="20dp"
-                android:text="Plate : "
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/RequesterVPlate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/textView29"
-                android:layout_alignBottom="@id/textView29"
-                android:textSize="20sp"
-                android:text="VehiclePlate"/>
-
-            <!--<TextView
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textView29"
+                android:layout_below="@id/textView28"
                 android:layout_marginTop="20dp"
                 android:text="Offered Price : "
                 android:textSize="20sp" />
@@ -185,7 +168,7 @@
                 android:layout_toRightOf="@id/textView30"
                 android:layout_alignBottom="@id/textView30"
                 android:textSize="20sp"
-                android:text="Price"/>-->
+                android:text="Price"/>
 
         </RelativeLayout>
 

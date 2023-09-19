@@ -42,7 +42,9 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.MyViewHo
         holder.Vehicle.setText(request.VehicleModel);
         holder.Service.setText(request.ServiceType);
         holder.Rid.setText(request.getDocumentId());
-        //holder.Price.setText(request.takdelagi);
+
+        int fee = request.Fee;
+        holder.Price.setText(String.valueOf(fee));
 
         // Calculate the distance in kilometers with one decimal point
         double distanceInKilometers = request.getDistance() / 1000.0;
@@ -81,7 +83,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.MyViewHo
             Address = itemView.findViewById(R.id.AreaName);
             Vehicle = itemView.findViewById(R.id.RVehicle);
             Service = itemView.findViewById(R.id.RService);
-            //Price = itemView.findViewById(R.id.Rprice);
+            Price = itemView.findViewById(R.id.Rprice);
             Distance = itemView.findViewById(R.id.distance);
             Rid = itemView.findViewById(R.id.RequestID);
             vDetails = itemView.findViewById(R.id.viewDetails);

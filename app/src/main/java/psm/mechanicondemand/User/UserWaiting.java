@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -55,6 +56,8 @@ public class UserWaiting extends DrawerUser {
     String MechExp;
     String User;
 
+    // Declare mechanicsCollectionRef as a class-level variable
+    private CollectionReference mechanicsCollectionRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,9 @@ public class UserWaiting extends DrawerUser {
         setContentView(activityUserWaitingBinding.getRoot());
 
         db = FirebaseFirestore.getInstance();
+
+        // Initialize mechanicsCollectionRef here
+        mechanicsCollectionRef = db.collection("mechanics");
 
         Intent intent = getIntent();
         String userID = intent.getStringExtra("UserID");
@@ -82,6 +88,9 @@ public class UserWaiting extends DrawerUser {
         Fragment fragment = new MapFragment2();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_map4, fragment).commit();
 
+        // Reference to the mechanics collection
+        CollectionReference mechanicsCollectionRef = db.collection("mechanics");
+
         db.collection("request")
                 .document(userID)
                 .get()
@@ -96,6 +105,9 @@ public class UserWaiting extends DrawerUser {
                             if (requestData != null && requestData.containsKey("MechanicID")) {
                                 MechID = documentSnapshot.getString("MechanicID");
                                 MID.setText(MechID);
+
+                                // Fetch mechanic data here
+                                fetchMechanicData(MechID);
                             } else {
                                 MID.setText("MechanicID not available");
                             }
@@ -117,44 +129,6 @@ public class UserWaiting extends DrawerUser {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(UserWaiting.this, "Error fetching data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-        //Fetch the data for the mechanic
-        // Reference to the mechanics collection
-        CollectionReference mechanicsCollectionRef = db.collection("mechanics");
-
-        // Query the mechanics collection to get the mechanic document with the matching MechanicID
-        Query query = mechanicsCollectionRef.whereEqualTo("MechanicID", MechID);
-
-        query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            // If there is a matching document, it should be unique based on the MechanicID
-                            DocumentSnapshot mechanicDocument = queryDocumentSnapshots.getDocuments().get(0);
-
-                            // Get the mechanic's data
-                            MechName = mechanicDocument.getString("Name");
-                            MechPhone = mechanicDocument.getString("PhoneNo");
-                            MechExp = mechanicDocument.getString("YearExp");
-
-                            //Display data
-                            MName.setText("Mechanic Name : "+ MechName);
-                            MPhone.setText("Phone Number: " + MechPhone);
-                            MExp.setText("Year of Experience: " + MechExp);
-                        } else {
-                            // No matching document found
-                            // Handle the case where no mechanic with the given MechanicID exists
-                            Toast.makeText(UserWaiting.this, "No mechanic found with the provided ID", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // Handle errors
-                        Toast.makeText(UserWaiting.this, "Error fetching mechanic data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -188,4 +162,38 @@ public class UserWaiting extends DrawerUser {
         });
 
     }
+
+    // Function to fetch mechanic data
+    private void fetchMechanicData(String mechanicID) {
+        // Reference the mechanic document by its ID (MechID)
+        DocumentReference mechanicDocRef = mechanicsCollectionRef.document(mechanicID);
+
+        mechanicDocRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            // Mechanic document exists, you can access its data
+                            MechName = documentSnapshot.getString("Name");
+                            MechPhone = documentSnapshot.getString("PhoneNo");
+                            MechExp = documentSnapshot.getString("YearExp");
+
+                            // Display data
+                            MName.setText("Mechanic Name: " + MechName);
+                            MPhone.setText("Phone Number: " + MechPhone);
+                            MExp.setText("Year of Experience: " + MechExp);
+                        } else {
+                            // No matching document found
+                            Toast.makeText(UserWaiting.this, "No mechanic found with the provided ID", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle errors
+                        Toast.makeText(UserWaiting.this, "Error fetching mechanic data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
 }

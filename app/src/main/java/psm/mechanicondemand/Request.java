@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Request implements Serializable {
 
     String Address, RequestDetails, ServiceType, Status, VehicleModel, documentId;
-    int Latitude, Longitude;
+    int Latitude, Longitude, Fee;
     double Distance;
 
     public Request() {
     }
 
     public Request(String address, String requestDetails, String serviceType, String status,
-                   String vehicleModel, int latitude, int longitude, double distance, String DocumentId) {
+                   String vehicleModel, int latitude, int longitude, int fee, double distance, String DocumentId) {
         Address = address;
         RequestDetails = requestDetails;
         ServiceType = serviceType;
@@ -22,6 +22,7 @@ public class Request implements Serializable {
         Longitude = longitude;
         Distance = distance;
         documentId = DocumentId;
+        Fee = fee;
     }
 
     public String getAddress() {
@@ -96,4 +97,11 @@ public class Request implements Serializable {
         this.documentId = DocumentId;
     }
 
+    public int getFee() {
+        return Fee;
+    }
+
+    public void setFee(int fee) {
+        Fee = fee;
+    }
 }

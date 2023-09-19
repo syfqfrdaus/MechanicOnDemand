@@ -18,6 +18,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MechanicOnDemand"
+
         tools:targetApi="31">
         <activity
             android:name=".User.UserComplete"

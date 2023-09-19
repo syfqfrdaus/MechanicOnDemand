@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -82,22 +83,11 @@
             android:layout_marginLeft="40dp"
             android:text="Vehi Plate"/>
 
-
-        <Button
-            android:id="@+id/btnUpdateVehi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textView17"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="85dp"
-            android:text="Update" />
-
         <Button
             android:id="@+id/btnDeleteVehi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/btnUpdateVehi"
+            android:layout_centerInParent="true"
             android:layout_below="@id/textView17"
             android:layout_marginTop="15dp"
             android:text="Delete" />
