@@ -85,7 +85,7 @@ public class VehicleAdapter extends RecyclerView.Adapter<VehicleAdapter.MyViewHo
             Brand = itemView.findViewById(R.id.brand);
             Model = itemView.findViewById(R.id.model);
             Plate = itemView.findViewById(R.id.plate);
-            Update = itemView.findViewById(R.id.btnUpdateVehi);
+            //Update = itemView.findViewById(R.id.btnUpdateVehi);
             Delete = itemView.findViewById(R.id.btnDeleteVehi);
 
         }
