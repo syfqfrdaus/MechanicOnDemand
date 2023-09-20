@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/distance"
+                android:id="@+id/Price"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -82,7 +82,7 @@
                     android:layout_toRightOf="@+id/textView21"
                     android:text="ServiceType" />
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/textView22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,21 +99,21 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@id/textView22"
-                    android:text="ReqPrice" />
+                    android:text="ReqPrice" />-->
 
                 <TextView
                     android:id="@+id/hmmm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@id/textView22"
+                    android:layout_below="@id/textView21"
                     android:text="RequestID : "/>
 
                 <TextView
                     android:id="@+id/RequestID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/Rprice"
+                    android:layout_below="@id/RService"
                     android:layout_toRightOf="@id/hmmm"
                     android:layout_marginTop="10dp"
                     android:text="Doc ID"

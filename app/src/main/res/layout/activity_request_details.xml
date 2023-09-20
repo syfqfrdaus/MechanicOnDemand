@@ -32,13 +32,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/ReqDistance"
+                android:id="@+id/addressDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="Distance"
-                android:textSize="35sp"
-                android:textStyle="bold" />
+                android:text="Address"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/icon_pinlocation"
+                android:drawablePadding="5dp"/>
+
         </LinearLayout>
 
         <RelativeLayout
@@ -48,7 +51,7 @@
             android:paddingBottom="10dp"
             android:background="@color/white">
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/addressDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,13 +60,12 @@
                 android:drawablePadding="5dp"
                 android:text="Kawasan"
                 android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textStyle="bold" />-->
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/addressDetails"
                 android:layout_marginTop="20dp"
                 android:text="Vehicle : "
                 android:textSize="20sp" />

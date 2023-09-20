@@ -76,13 +76,13 @@ public class UserWaiting extends DrawerUser {
         MName = findViewById(R.id.MechName);
         MPhone = findViewById(R.id.MechPhone);
         MExp = findViewById(R.id.MechExp);
-        MID = findViewById(R.id.MechID);
-        UID = findViewById(R.id.UserID);
+        //MID = findViewById(R.id.MechID);
+        //UID = findViewById(R.id.UserID);
         btnMcall = findViewById(R.id.btnCallMech);
         btnMArrived = findViewById(R.id.btnMechArrived);
-        Lat = findViewById(R.id.lat);
+        //Lat = findViewById(R.id.lat);
 
-        UID.setText(userID);
+        //UID.setText(userID);
 
         //Display the position of mechanic and user in map and get mech id
         Fragment fragment = new MapFragment2();
@@ -104,17 +104,18 @@ public class UserWaiting extends DrawerUser {
                             Map<String, Object> requestData = documentSnapshot.getData();
                             if (requestData != null && requestData.containsKey("MechanicID")) {
                                 MechID = documentSnapshot.getString("MechanicID");
-                                MID.setText(MechID);
+                                //MID.setText(MechID);
 
                                 // Fetch mechanic data here
                                 fetchMechanicData(MechID);
                             } else {
-                                MID.setText("MechanicID not available");
+                                //MID.setText("MechanicID not available");
+                                //Toast.makeText(UserWaiting.this, "Mechanic ID is not available", Toast.LENGTH_SHORT).show();
                             }
 
-                            String LatText = String.valueOf(latitude);
-                            String LongText = String.valueOf(longitude);
-                            Lat.setText(LatText + "," + LongText);
+                            //String LatText = String.valueOf(latitude);
+                            //String LongText = String.valueOf(longitude);
+                            //Lat.setText(LatText + "," + LongText);
 
                             Bundle args = new Bundle();
                             args.putDouble("Latitude", latitude);

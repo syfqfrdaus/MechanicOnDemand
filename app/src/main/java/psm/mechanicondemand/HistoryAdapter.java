@@ -36,13 +36,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         History history = historyArrayList.get(position);
 
         holder.Date.setText(history.Date);
-        holder.Time.setText(history.Time);
-        holder.Location.setText(history.Address);
-        holder.UName.setText(history.UserID);
-        holder.MName.setText(history.MechanicID);
-        holder.Vehicle.setText(history.VehicleName);
-        holder.Service.setText(history.Service);
-        holder.Fee.setText(Double.toString(history.Price));
+        holder.Time.setText("Time: " + history.Time);
+        holder.Location.setText("Address: " + history.Address);
+        holder.UName.setText("User ID: " + history.UserID);
+        holder.MName.setText("Mechanic ID: " + history.MechanicID);
+        holder.Vehicle.setText("Vehicle Model: " + history.VehicleName);
+        holder.Service.setText("Service: " + history.Service);
+        //holder.Fee.setText(Double.toString(history.Price));
+        holder.Fee.setText("Fee: " + Double.toString(history.Price));
 
     }
 

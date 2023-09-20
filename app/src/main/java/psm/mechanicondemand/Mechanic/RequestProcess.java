@@ -69,7 +69,7 @@ public class RequestProcess extends DrawerMechanic {
         btnNavigate = findViewById(R.id.btnNavigate);
         btnArrived = findViewById(R.id.btnArrived);
 
-        TextView DP = findViewById(R.id.HMMM);
+        //TextView DP = findViewById(R.id.HMMM);
 
         db = FirebaseFirestore.getInstance();
 
@@ -86,7 +86,7 @@ public class RequestProcess extends DrawerMechanic {
         CName.setText("Name : "+ userName);
         CVehicle.setText("Vehicle : "+ vehicleModel);
         CPhone.setText("Phone No : "+ userPhone);
-        DP.setText(userID);
+        //DP.setText(userID);
 
 
 

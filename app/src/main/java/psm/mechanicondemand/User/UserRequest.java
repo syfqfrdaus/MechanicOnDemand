@@ -61,6 +61,7 @@ public class UserRequest extends DrawerUser {
 
     int fee = 0;
 
+    String onlyAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,7 @@ public class UserRequest extends DrawerUser {
 
                     String LaLo = "Latitude: " + latitude + "\nLongitude: " + longitude;
                     formAddress.setText(LaLo + "\n" + address);
+                    onlyAddress = address;
                 } else {
                     formAddress.setText("Location not available");
                 }
@@ -138,7 +140,6 @@ public class UserRequest extends DrawerUser {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedVehicleModel = parent.getItemAtPosition(position).toString();
-                Toast.makeText(UserRequest.this, "Value selected are " + selectedVehicleModel, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -225,7 +226,8 @@ public class UserRequest extends DrawerUser {
                 String FullAddress, vehicleM, serviceT, RDetails;
                 double Lati, Longi;
 
-                FullAddress = formAddress.getText().toString();
+                //FullAddress = formAddress.getText().toString();
+                FullAddress = onlyAddress;
                 vehicleM = selectedVehicleModel;
                 serviceT = selectedService;
                 RDetails = detail.getText().toString();

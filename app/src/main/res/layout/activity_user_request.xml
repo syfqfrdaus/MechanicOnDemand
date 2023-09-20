@@ -41,8 +41,10 @@
                 android:ems="10"
                 android:hint="Current Address"
                 android:inputType="textMultiLine"
+                android:focusable="false"
                 android:lines="3"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                />
 
             <Spinner
                 android:id="@+id/spinVehicle"

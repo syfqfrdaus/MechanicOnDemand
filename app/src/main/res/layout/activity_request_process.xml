@@ -85,12 +85,12 @@
             android:text="PhoneNo : "
             />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/HMMM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/CustPhone"
-            android:textSize="20sp"/>
+            android:textSize="20sp"/>-->
     </RelativeLayout>
 
     <LinearLayout

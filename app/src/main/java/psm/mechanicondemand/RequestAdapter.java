@@ -47,10 +47,10 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.MyViewHo
         holder.Price.setText(String.valueOf(fee));
 
         // Calculate the distance in kilometers with one decimal point
-        double distanceInKilometers = request.getDistance() / 1000.0;
-        String formattedDistance = String.format("%.2f km", distanceInKilometers);
+        //double distanceInKilometers = request.getDistance() / 1000.0;
+        //String formattedDistance = String.format("%.2f km", distanceInKilometers);
 
-        holder.Distance.setText(formattedDistance); // Set the formatted distance value
+        //holder.Distance.setText(formattedDistance); // Set the formatted distance value
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +83,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.MyViewHo
             Address = itemView.findViewById(R.id.AreaName);
             Vehicle = itemView.findViewById(R.id.RVehicle);
             Service = itemView.findViewById(R.id.RService);
-            Price = itemView.findViewById(R.id.Rprice);
-            Distance = itemView.findViewById(R.id.distance);
+            Price = itemView.findViewById(R.id.Price);
+            //Distance = itemView.findViewById(R.id.distance);
             Rid = itemView.findViewById(R.id.RequestID);
             vDetails = itemView.findViewById(R.id.viewDetails);
 

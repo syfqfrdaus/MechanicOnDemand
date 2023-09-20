@@ -112,47 +112,6 @@ public class MechanicRequest extends DrawerMechanic {
         FillRecyclerView();
     }
 
-    /**
-     * public void FillRecyclerView() {
-     * db.collection("request")
-     * .whereEqualTo("Status", "Active") // Add a query to filter documents with Status = "Active"
-     * .get()
-     * .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-     *
-     * @Override public void onComplete(@NonNull Task<QuerySnapshot> task) {
-     * if (task.isSuccessful()) {
-     * int iterationCount = 1;
-     * for (QueryDocumentSnapshot document : task.getResult()) {
-     * String documentId = document.getId(); // Get the document ID
-     * <p>
-     * Request request = document.toObject(Request.class);
-     * request.setDocumentId(documentId); // Set the document ID in the Request object
-     * <p>
-     * // Calculate the distance between the current request and the mechanic's location
-     * requestLatitude = request.getLatitude();
-     * requestLongitude = request.getLongitude();
-     * calculateDistance(mlatitude, mlongitude, requestLatitude, requestLongitude);
-     * <p>
-     * // Set the distance in the request object
-     * request.setDistance(distance);
-     * <p>
-     * Toast.makeText(MechanicRequest.this, "Distance for iteration " + iterationCount + ": " + distance, Toast.LENGTH_SHORT).show();
-     * <p>
-     * requestArrayList.add(request);
-     * <p>
-     * iterationCount++; // Increment the counter variable
-     * }
-     * <p>
-     * requestAdapter.notifyDataSetChanged();
-     * } else {
-     * Log.e("Firestore Error", task.getException().getMessage());
-     * }
-     * }
-     * });
-     * }
-     **/
-
-
     public void FillRecyclerView() {
         db.collection("request")
                 .whereEqualTo("Status", "Active") // Add a query to filter documents with Status = "Active"
@@ -182,7 +141,7 @@ public class MechanicRequest extends DrawerMechanic {
                                 // Set the distance in the request object
                                 request.setDistance(distance);
 
-                                Toast.makeText(MechanicRequest.this, "Distance for iteration " + iterationCount + ": " + distance, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(MechanicRequest.this, "Distance for iteration " + iterationCount + ": " + distance, Toast.LENGTH_SHORT).show();
 
                                 requestArrayList.add(request);
 

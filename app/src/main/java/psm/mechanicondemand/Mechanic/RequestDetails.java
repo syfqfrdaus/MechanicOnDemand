@@ -68,7 +68,7 @@ public class RequestDetails extends DrawerMechanic {
         TextView serviceType = findViewById(R.id.DetailsServiceType);
         TextView DetailsVehicle = findViewById(R.id.DetailsVehicleName);
         TextView Details = findViewById(R.id.DetailsRemarks);
-        TextView RDistance = findViewById(R.id.ReqDistance);
+        //TextView RDistance = findViewById(R.id.ReqDistance);
         TextView requesterName = findViewById(R.id.RequesterName);
         TextView requesterPhone = findViewById(R.id.RequesterPhone);
         TextView offeredPrice = findViewById(R.id.OfferedPrice);
@@ -82,9 +82,9 @@ public class RequestDetails extends DrawerMechanic {
         // Display the details of the selected request
         if (selectedRequest != null) {
 
-            double distanceInKilometers = selectedRequest.getDistance() / 1000.0;
-            String formattedDistance = String.format("%.2f km", distanceInKilometers);
-            RDistance.setText(formattedDistance);
+            //double distanceInKilometers = selectedRequest.getDistance() / 1000.0;
+            //String formattedDistance = String.format("%.2f km", distanceInKilometers);
+            //RDistance.setText(formattedDistance);
 
             // Set other TextViews or views with the corresponding details from selectedRequest
             address.setText(selectedRequest.getAddress());
@@ -133,7 +133,6 @@ public class RequestDetails extends DrawerMechanic {
 
 
             //Find ways to get vehicle plate no
-
 
 
         }
