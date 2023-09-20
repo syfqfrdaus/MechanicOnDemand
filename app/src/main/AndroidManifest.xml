@@ -82,7 +82,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDeoW1fsmTIgkPTq4qz6eM18iEc4cszRVQ" />
+            android:value="Your key here" />
 
         <activity
             android:name=".Mechanic.MechanicHistory"
